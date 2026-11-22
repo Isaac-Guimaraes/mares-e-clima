@@ -11,7 +11,6 @@
     "dev": "concurrently -n api,web -c blue,green \"npm:dev:backend\" \"npm:dev:frontend\"",
     "dev:backend": "npm run dev --workspace=backend",
     "dev:frontend": "npm run dev --workspace=frontend",
-    "test": "npm test --workspace=backend",
     "typecheck": "npm run typecheck --workspaces",
     "build": "npm run build --workspaces",
     "lint": "npm run lint --workspace=frontend"

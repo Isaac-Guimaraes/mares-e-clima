@@ -1,5 +1,5 @@
 /**
- * Praia extraída do OpenStreetMap (natural=beach com nome) pelo script scripts/gerar-praias-osm.ts.
+ * Praia extraída do OpenStreetMap (natural=beach com nome) via Overpass API.
  * O id é negativo para nunca colidir com os ids positivos do GeoNames (Geocoding API).
  */
 export interface PraiaOsm {

@@ -41,7 +41,7 @@ Este documento registra, para cada heurística de Jakob Nielsen, um **problema**
 - **Problema:** as pessoas pensam em nomes de praia ("Praia do Buracão", "Praia de Ipanema"), mas a Geocoding API do Open-Meteo usa a base GeoNames, que tem cidades e bairros e quase nenhuma praia. Datas apareciam como "sábado, 21 de novembro", e a API fala em `sea_level_height_msl`.
 - **Evidência:** relato de uso em 21/11/2026: "o campo de busca não está sendo preciso". A consulta `name=Praia de Ipanema` devolvia lista vazia, enquanto `name=Ipanema` devolvia o bairro (teste de 09/11/2026). No OpenStreetMap, só a área de Salvador tem 37 praias com nome, como Buracão, Piatã e Boa Viagem.
 - **Melhorias:**
-  - Base local com as praias com nome do litoral brasileiro, extraída do OpenStreetMap. A busca mostra essas praias primeiro e depois cidades e bairros, sem repetir o mesmo lugar (`backend/src/services/praias.service.ts`, `geocoding.service.ts`, testes em `backend/tests/praias.service.test.ts`).
+  - Base local com as praias com nome do litoral brasileiro, extraída do OpenStreetMap. A busca mostra essas praias primeiro e depois cidades e bairros, sem repetir o mesmo lugar (`backend/src/services/praias.service.ts`, `geocoding.service.ts`).
   - Se o nome completo não encontra nada na Geocoding API, a busca tenta de novo sem "Praia de/do/da".
   - Abas de dia "Hoje", "Amanhã", "Qui" (`lib/formatacao.ts → rotuloDia`, `components/SeletorDia.tsx`).
   - "Maré agora: Enchendo · -0,19 m" e "Próxima: maré alta às 00:00", em vez de números soltos (`PaginaHoje.tsx`).

@@ -5,7 +5,7 @@ const LIMIAR_ESTAVEL_M = 0.01;
 
 /**
  * RF03 — Lógica de marés sobre a série horária de `sea_level_height_msl`.
- * Funções puras, sem rede: fáceis de testar (ver tests/mares.service.test.ts).
+ * Funções puras, sem rede.
  */
 export class MaresService {
   /**

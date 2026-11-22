@@ -24,7 +24,7 @@ export function carregarPraiasOsm(caminho: URL): PraiaOsm[] {
     console.log(`[praias] ${praias.length} praias do OpenStreetMap carregadas (base de ${arquivo.geradoEm ?? 'data desconhecida'}).`);
     return praias;
   } catch {
-    console.warn('[praias] Base de praias não encontrada. Rode "npm run praias:atualizar --workspace=backend".');
+    console.warn('[praias] Base de praias não encontrada em backend/data/praias-osm.json.');
     return [];
   }
 }

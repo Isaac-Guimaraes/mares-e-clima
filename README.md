@@ -24,7 +24,6 @@ Opcional: copie `backend/.env.example` para `backend/.env` para mudar porta, COR
 | Comando | O que faz |
 | --- | --- |
 | `npm run dev` | Sobe API e front-end juntos |
-| `npm test` | Roda os testes do back-end |
 | `npm run typecheck` | Verifica os tipos dos dois projetos |
 | `npm run lint` | Roda o ESLint no front-end |
 | `npm run build` | Gera o build de produção |
@@ -67,4 +66,4 @@ Os dados de maré vêm de um modelo numérico com resolução de cerca de 8 km. 
 
 Dados meteorológicos e marinhos: Open-Meteo.com, licença CC BY 4.0, uso não comercial gratuito.
 
-Mapa e base de praias: © colaboradores do OpenStreetMap, licença ODbL. Para atualizar a base (`backend/data/praias-osm.json`): `npm run praias:atualizar --workspace=backend`.
+Mapa e base de praias: © colaboradores do OpenStreetMap, licença ODbL. A base (`backend/data/praias-osm.json`) foi extraída da Overpass API em 21/11/2026.

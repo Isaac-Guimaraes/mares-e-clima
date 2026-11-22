@@ -31,7 +31,7 @@ As rotas seguem o protótipo web. Cada arquivo `page.tsx` define o título da ab
 
 - O navegador chama o back-end do projeto: `lib/api.ts` (`buscarLocalidades` → `GET /api/localidades`, `buscarPraiasNaArea` → `GET /api/praias`, `obterCondicoes` → `GET /api/condicoes`).
 - O navegador também usa duas interfaces públicas diretamente: a **Geolocation API** do próprio navegador ("Usar minha localização", `PaginaBusca.tsx`) e os blocos de mapa do **OpenStreetMap** (`MapaPraias.tsx`).
-- Praias por nome e por área vêm de uma base local do OpenStreetMap (`backend/data/praias-osm.json`), gerada pela **Overpass API** com `backend/scripts/gerar-praias-osm.ts`, também marcado com `[API PÚBLICA]`.
+- Praias por nome e por área vêm de uma base local do OpenStreetMap (`backend/data/praias-osm.json`), extraída da **Overpass API** do OpenStreetMap em 21/11/2026 (praias com `natural=beach` e nome nos 17 estados litorâneos).
 - O back-end chama as APIs públicas do Open-Meteo. Cada ponto está marcado com o comentário `[API PÚBLICA]`:
 
 | API pública | Endpoint | Onde é chamada |

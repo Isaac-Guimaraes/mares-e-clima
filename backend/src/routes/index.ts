@@ -23,7 +23,7 @@ export function criarRotas(): Router {
   const buscarJson = criarClienteOpenMeteo(env.openMeteo.timeoutMs);
 
   const marineService = new MarineService(buscarJson, env.openMeteo.marineUrl);
-  // Base local de praias do OpenStreetMap, gerada por scripts/gerar-praias-osm.ts.
+  // Base local de praias do OpenStreetMap (backend/data/praias-osm.json).
   const praiasService = new PraiasService(carregarPraiasOsm(new URL('../../data/praias-osm.json', import.meta.url)), marineService);
   const geocodingService = new GeocodingService(
     buscarJson,
