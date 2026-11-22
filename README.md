@@ -1,6 +1,8 @@
 # Marés e Clima
 
-Aplicativo web que mostra a previsão de marés, ondas e tempo de uma praia e indica os melhores horários para aproveitá-la. Usa apenas APIs públicas e gratuitas do [Open-Meteo](https://open-meteo.com/).
+Aplicativo web que mostra a previsão de marés, ondas e tempo de uma praia e indica os melhores horários para aproveitá-la. Usa APIs públicas e gratuitas do [Open-Meteo](https://open-meteo.com/) e praias do [OpenStreetMap](https://www.openstreetmap.org/).
+
+**Acesse:** https://mares-e-clima.vercel.app · API: https://mares-e-clima-api.vercel.app/api/saude
 
 ## Requisitos
 
@@ -18,6 +20,22 @@ npm run dev
 - API: porta 3333 (verificação: `/api/saude`)
 
 Opcional: copie `backend/.env.example` para `backend/.env` para mudar porta, CORS, cache ou país da busca, e `frontend/.env.example` para `frontend/.env.local` para mudar o endereço da API.
+
+## Deploy (Vercel)
+
+São dois projetos no Vercel, a partir das pastas do repositório:
+
+| Projeto | Pasta | Configuração |
+| --- | --- | --- |
+| `mares-e-clima` (site) | `frontend` | Next.js; variável `NEXT_PUBLIC_API_URL=https://mares-e-clima-api.vercel.app` |
+| `mares-e-clima-api` (API) | `backend` | Express (`vercel.json`); entrada `src/index.ts`; `CORS_ORIGIN` opcional |
+
+Para publicar uma nova versão, com o [Vercel CLI](https://vercel.com/docs/cli) logado:
+
+```bash
+vercel deploy --prod --cwd backend
+vercel deploy --prod --cwd frontend
+```
 
 ## Scripts
 
