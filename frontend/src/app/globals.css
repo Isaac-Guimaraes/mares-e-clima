@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/*
+ * Tokens do Manual de Identidade Visual (paleta "Mar, sol e areia" e cores funcionais).
+ * Contraste verificado nos dois temas (WCAG 1.4.3 e 1.4.11): menor razão de texto 4,9:1.
+ * Componentes usam só estes tokens; nunca cores fixas do Tailwind.
+ */
+@theme {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-titulo: var(--font-nunito), system-ui, sans-serif;
+
+  --color-mares-fundo: #f7f1e6; /* Areia */
+  --color-mares-superficie: #ffffff;
+  --color-mares-superficie-alta: #eef6f6;
+  --color-mares-texto: #10212f; /* Tinta */
+  --color-mares-suave: #55626e; /* Névoa */
+  --color-mares-borda: #7d8893;
+  --color-mares-divisoria: #e6dfd1;
+  --color-mares-titulo: #0e3b5c; /* Oceano */
+  --color-mares-marca: #0e3b5c; /* Oceano: barras e bloco do logotipo */
+  --color-mares-sobre-marca: #ffffff;
+  --color-mares-primaria: #1a6fa0; /* Maré: botões, links, gráfico */
+  --color-mares-sobre-primaria: #ffffff;
+  --color-mares-link: #1a6fa0;
+  --color-mares-agua: #7fd1d9; /* Água: área do gráfico */
+  --color-mares-sol: #f5b335; /* Sol: melhor horário */
+  --color-mares-sobre-sol: #10212f;
+  --color-mares-favoravel: #23785c;
+  --color-mares-sobre-favoravel: #ffffff;
+  --color-mares-desfavoravel: #b9442a;
+  --color-mares-sobre-desfavoravel: #ffffff;
+  --color-mares-info: #e3f3f5;
+  --color-mares-erro: #f9e6e0;
+  --color-mares-noite: #e9e4da;
+  --color-mares-foco: #1a6fa0;
+}
+
+/* Tema escuro: pelo sistema (prefers-color-scheme) ou escolhido em Ajustes (data-tema). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --color-mares-fundo: #0a1824;
+    --color-mares-superficie: #0f2536;
+    --color-mares-superficie-alta: #163349;
+    --color-mares-texto: #f7f1e6;
+    --color-mares-suave: #a9b8c5;
+    --color-mares-borda: #6e879c;
+    --color-mares-divisoria: #23415a;
+    --color-mares-titulo: #f7f1e6;
+    --color-mares-primaria: #7fc3ec;
+    --color-mares-sobre-primaria: #0a1824;
+    --color-mares-link: #8ccbf0;
+    --color-mares-favoravel: #5cc79a;
+    --color-mares-sobre-favoravel: #0a1824;
+    --color-mares-desfavoravel: #f2907a;
+    --color-mares-sobre-desfavoravel: #0a1824;
+    --color-mares-info: #123a4a;
+    --color-mares-erro: #3d221c;
+    --color-mares-noite: #1a3044;
+    --color-mares-foco: #f5b335;
+    color-scheme: dark;
+  }
+}
+
+:root[data-tema="escuro"] {
+  --color-mares-fundo: #0a1824;
+  --color-mares-superficie: #0f2536;
+  --color-mares-superficie-alta: #163349;
+  --color-mares-texto: #f7f1e6;
+  --color-mares-suave: #a9b8c5;
+  --color-mares-borda: #6e879c;
+  --color-mares-divisoria: #23415a;
+  --color-mares-titulo: #f7f1e6;
+  --color-mares-primaria: #7fc3ec;
+  --color-mares-sobre-primaria: #0a1824;
+  --color-mares-link: #8ccbf0;
+  --color-mares-favoravel: #5cc79a;
+  --color-mares-sobre-favoravel: #0a1824;
+  --color-mares-desfavoravel: #f2907a;
+  --color-mares-sobre-desfavoravel: #0a1824;
+  --color-mares-info: #123a4a;
+  --color-mares-erro: #3d221c;
+  --color-mares-noite: #1a3044;
+  --color-mares-foco: #f5b335;
+  color-scheme: dark;
+}
+
+:root {
+  color-scheme: light;
+  scroll-padding-top: 1rem;
+}
+
+body {
+  background-color: var(--color-mares-fundo);
+  color: var(--color-mares-texto);
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-mares-foco);
+  outline-offset: 3px;
+}
+
+main:focus,
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+@layer components {
+  /* Manual, p. 10: cards com raio 16–20 px e sem sombra; o contraste vem da cor do fundo. */
+  .cartao {
+    @apply rounded-[1.25rem] border border-mares-divisoria bg-mares-superficie p-4 sm:p-6;
+  }
+
+  /* Manual, p. 8: Nunito para títulos e números em destaque. */
+  .titulo-tela {
+    @apply font-titulo text-3xl leading-tight font-black text-mares-titulo sm:text-4xl;
+  }
+
+  .titulo-secao {
+    @apply font-titulo text-xl font-extrabold text-mares-titulo;
+  }
+
+  .dica {
+    @apply text-sm text-mares-suave;
+  }
+
+  .rotulo {
+    @apply mb-1.5 block text-sm font-semibold;
+  }
+
+  .entrada {
+    @apply min-h-12 w-full rounded-[0.875rem] border border-mares-borda bg-mares-fundo px-4 py-2 text-base text-mares-texto focus:border-mares-primaria;
+  }
+
+  .entrada[aria-invalid="true"] {
+    @apply border-2 border-mares-desfavoravel;
+  }
+
+  /* Manual, p. 10: botões com 48 px de altura e raio 14 px (alvo acima de 44 px, WCAG 2.5.8). */
+  .botao {
+    @apply inline-flex min-h-12 min-w-12 cursor-pointer items-center justify-center gap-2 rounded-[0.875rem] border-2 border-mares-titulo bg-mares-superficie px-5 py-2 text-[0.9375rem] font-semibold text-mares-titulo transition-colors hover:bg-mares-superficie-alta;
+  }
+
+  .botao-primario {
+    @apply border-mares-primaria bg-mares-primaria text-mares-sobre-primaria hover:bg-mares-primaria hover:brightness-110;
+  }
+
+  .link {
+    @apply inline-flex min-h-11 items-center gap-1 font-semibold text-mares-link underline underline-offset-4;
+  }
+
+  /* Manual, p. 10: chips com raio 8 px. Sempre ícone + texto, nunca só cor (p. 7). */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-sm font-semibold whitespace-nowrap;
+  }
+
+  .tabela-rolavel {
+    @apply relative overflow-x-auto rounded-[1rem] border border-mares-divisoria bg-mares-superficie;
+  }
+
+  .tabela {
+    @apply w-full text-left text-sm whitespace-nowrap tabular-nums;
+  }
+
+  .tabela caption {
+    @apply px-4 py-3 text-left font-semibold;
+  }
+
+  .tabela thead th {
+    @apply sticky top-0 z-10 border-y border-mares-divisoria bg-mares-superficie-alta px-4 py-3 font-semibold text-mares-titulo;
+  }
+
+  .tabela tbody th {
+    @apply font-semibold text-mares-titulo;
+  }
+
+  .tabela tbody th,
+  .tabela tbody td {
+    @apply border-t border-mares-divisoria px-4 py-3;
+  }
+}
+
+/* Modo de alto contraste do Windows: o SVG do gráfico não recebe as cores do sistema sozinho. */
+@media (forced-colors: active) {
+  .recharts-area-curve,
+  .marcador-mare polygon {
+    stroke: CanvasText;
+  }
+  .recharts-area-area,
+  .recharts-reference-area-rect {
+    fill: none;
+  }
+  .recharts-text,
+  .marcador-mare text {
+    fill: CanvasText;
+  }
+  .chip {
+    border: 1px solid CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
