@@ -76,6 +76,16 @@ Início (`/`), Resultados da busca (`/busca`), Hoje (`/hoje`), Previsão (`/prev
 
 Desenvolvido para atender às **WCAG 2.2, nível AA**, do W3C. Veja `docs/acessibilidade.md`.
 
+Equipe
+Lucas Almeida de Moura
+André Luiz Cavalcante Lino Oliveira
+Kerlon Luan Pereira Dos Santos
+Isaac de Carvalho Guimarães
+Marcos Vinicius Pereira Mendes
+Kayque Miguel Ferreira Benjamim
+Mateus Emilio de Aquino Basilio
+
+
 ## Aviso
 
 Os dados de maré vêm de um modelo numérico com resolução de cerca de 8 km. **Não use para navegação.** Consulte as Tábuas de Marés da Marinha do Brasil.
@@ -85,3 +95,5 @@ Os dados de maré vêm de um modelo numérico com resolução de cerca de 8 km. 
 Dados meteorológicos e marinhos: Open-Meteo.com, licença CC BY 4.0, uso não comercial gratuito.
 
 Mapa e base de praias: © colaboradores do OpenStreetMap, licença ODbL. A base (`backend/src/data/praias-osm.json`) foi extraída da Overpass API em 21/11/2026.
+
+
