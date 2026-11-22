@@ -1,7 +1,7 @@
-import { criarApp } from './app.js';
 import { env } from './config/env.js';
+import app from './index.js';
 
-const servidor = criarApp().listen(env.porta, () => {
+const servidor = app.listen(env.porta, () => {
   console.log(`API Marés e Clima ouvindo na porta ${env.porta}`);
 });
 

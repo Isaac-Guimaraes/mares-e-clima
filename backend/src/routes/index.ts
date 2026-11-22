@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { criarClienteOpenMeteo } from '../clients/open-meteo.client.js';
 import { env } from '../config/env.js';
 import { carregarPraiasOsm } from '../clients/praias-osm.client.js';
+import basePraias from '../data/praias-osm.json' with { type: 'json' };
 import { CondicoesController } from '../controllers/condicoes.controller.js';
 import { PraiaController } from '../controllers/praia.controller.js';
 import { PraiasService } from '../services/praias.service.js';
@@ -23,8 +24,8 @@ export function criarRotas(): Router {
   const buscarJson = criarClienteOpenMeteo(env.openMeteo.timeoutMs);
 
   const marineService = new MarineService(buscarJson, env.openMeteo.marineUrl);
-  // Base local de praias do OpenStreetMap (backend/data/praias-osm.json).
-  const praiasService = new PraiasService(carregarPraiasOsm(new URL('../../data/praias-osm.json', import.meta.url)), marineService);
+  // Base local de praias do OpenStreetMap (src/data/praias-osm.json).
+  const praiasService = new PraiasService(carregarPraiasOsm(basePraias), marineService);
   const geocodingService = new GeocodingService(
     buscarJson,
     env.openMeteo.geocodingUrl,

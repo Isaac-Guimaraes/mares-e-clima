@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import type { PraiaOsm } from '../models/praia.model.js';
 
 interface ArquivoPraias {
@@ -14,17 +13,12 @@ function ehPraia(valor: unknown): valor is PraiaOsm {
 }
 
 /**
- * Lê a base local de praias do OpenStreetMap (backend/data/praias-osm.json).
- * Sem o arquivo, o app continua funcionando só com a Geocoding API.
+ * Valida a base local de praias do OpenStreetMap (src/data/praias-osm.json).
+ * O arquivo é importado como módulo, então vai junto no build e no deploy.
  */
-export function carregarPraiasOsm(caminho: URL): PraiaOsm[] {
-  try {
-    const arquivo = JSON.parse(readFileSync(caminho, 'utf8')) as ArquivoPraias;
-    const praias = Array.isArray(arquivo.praias) ? arquivo.praias.filter(ehPraia) : [];
-    console.log(`[praias] ${praias.length} praias do OpenStreetMap carregadas (base de ${arquivo.geradoEm ?? 'data desconhecida'}).`);
-    return praias;
-  } catch {
-    console.warn('[praias] Base de praias não encontrada em backend/data/praias-osm.json.');
-    return [];
-  }
+export function carregarPraiasOsm(arquivo: unknown): PraiaOsm[] {
+  const conteudo = (typeof arquivo === 'object' && arquivo !== null ? arquivo : {}) as ArquivoPraias;
+  const praias = Array.isArray(conteudo.praias) ? conteudo.praias.filter(ehPraia) : [];
+  console.log(`[praias] ${praias.length} praias do OpenStreetMap carregadas (base de ${conteudo.geradoEm ?? 'data desconhecida'}).`);
+  return praias;
 }

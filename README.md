@@ -66,4 +66,4 @@ Os dados de maré vêm de um modelo numérico com resolução de cerca de 8 km. 
 
 Dados meteorológicos e marinhos: Open-Meteo.com, licença CC BY 4.0, uso não comercial gratuito.
 
-Mapa e base de praias: © colaboradores do OpenStreetMap, licença ODbL. A base (`backend/data/praias-osm.json`) foi extraída da Overpass API em 21/11/2026.
+Mapa e base de praias: © colaboradores do OpenStreetMap, licença ODbL. A base (`backend/src/data/praias-osm.json`) foi extraída da Overpass API em 21/11/2026.
