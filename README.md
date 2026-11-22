@@ -76,7 +76,7 @@ Início (`/`), Resultados da busca (`/busca`), Hoje (`/hoje`), Previsão (`/prev
 
 Desenvolvido para atender às **WCAG 2.2, nível AA**, do W3C. Veja `docs/acessibilidade.md`.
 
-Equipe
+##Equipe
 Lucas Almeida de Moura
 André Luiz Cavalcante Lino Oliveira
 Kerlon Luan Pereira Dos Santos
